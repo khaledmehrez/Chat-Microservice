@@ -1,0 +1,97 @@
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script
+    src="https://cdn.socket.io/4.3.2/socket.io.min.js"
+    integrity="sha384-KAZ4DtjNhLChOB/hxXuKqhMLYvx3b5MlT55xPEiNmREKRzeEm+RVPlTnAn0ajQNs"
+    crossorigin="anonymous"
+  ></script>
+  <script>
+    const socketOptions = {
+      transports: ["websocket"],
+      path: "/chat-socket",
+      secure: false,
+      reconnection: true,
+      rejectUnauthorized: true,
+      auth: {
+        token:
+"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmQ1ODAyMTljOTk4MDZkZWI3MzQxZmYiLCJ1c2VyIjoiNjJkNTgwMmE4NjNmYTdjMjNkOTU2YzJlIiwicm9sZXMiOlsidXNlciJdLCJpYXQiOjE2Nzk2NTEwMzEsImV4cCI6MTY3OTY4NzAzMX0.2NSbrmqCYUIfxeNVFctfFciPKkLRRDx4q4sTDFSN58A"     }
+    };
+    const socket = io("https://chat-ms.lovester.tech/",socketOptions);
+    socket.on("connect_error", function(e) {
+      console.log("connect_error",JSON.stringify(e));
+    });
+    socket.on("error ", function(e) {
+      console.log("error -", e);
+    });
+    socket.on("reconnect_attempt", function(e) {
+      console.log("reconnect_attempt", e);
+    });
+    socket.on("disconnect", function(e) {
+      console.log("disconnect", e);
+    });
+    socket.on("reconnect_error", function(e) {
+      console.log("reconnect_error", e);
+    });
+    socket.on("connect", function() {
+      socket.emit("connection");
+      // socket.emit("send-typing",{destination:"625fe325aa5f1648d298d36b", conversation:"eeeae"});
+      console.log("Connected");
+    });
+    socket.on("reconnect_failed", function() {
+      console.log("reconnect_failed");
+    });
+    socket.on("afterConnect", function(data) {
+      console.log("afterConnect", data);
+    });
+    socket.on("newMatch", function(data) {
+      console.log("newMatch", data);
+    });
+    socket.on("new-message", function(data) {
+      console.log("msg", data);
+    });
+    socket.on("message-reaction", function(data) {
+      console.log("react", data);
+    });
+    socket.on("message-seen", function(data) {
+      console.log("seen", data);
+    });
+    socket.on("disconnect", function() {
+      console.log("Disconnected");
+    });
+    socket.on("typing", function(data) {
+      console.log("seen", data);
+    });
+    socket.emit("send-typing", {destination:"625fe325aa5f1648d298d36b", conversation:"eeeae"})
+  </script>
+</head>
+
+<body>
+<div class="header">
+  <h1>Instance--1</h1>
+  <p>Socket Testing</p>
+</div>
+</body>
+</html>
+<style>
+    /* Style the body */
+    body {
+        font-family: Arial;
+        margin: 0;
+    }
+
+    /* Header/Logo Title */
+    .header {
+        padding: 60px;
+        text-align: center;
+        background: #a64d79;
+        color: white;
+        font-size: 30px;
+    }
+
+    /* Page Content */
+    .content {
+        padding: 20px;
+    }
+</style>

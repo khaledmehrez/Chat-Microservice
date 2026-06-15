@@ -1,0 +1,81 @@
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script
+    src="https://cdn.socket.io/4.3.2/socket.io.min.js"
+    integrity="sha384-KAZ4DtjNhLChOB/hxXuKqhMLYvx3b5MlT55xPEiNmREKRzeEm+RVPlTnAn0ajQNs"
+    crossorigin="anonymous"
+  ></script>
+  <script>
+    const socketOptions = {
+      path: "/chat-socket",
+      transports: ["websocket"],
+      secure: false,
+      reconnection: true,
+      rejectUnauthorized: true,
+      auth: {
+        token:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmQ1ODY2NzljOTk4MDZkZWI3MzU1MDQiLCJ1c2VyIjoiNjJkNTg4OTQ4NjNmYTdjMjNkOTU3MWZiIiwicm9sZXMiOlsidXNlciJdLCJpYXQiOjE2Nzk2NTExMDEsImV4cCI6MTY3OTY4NzEwMX0.GCJmlFPmldd7XgTR71jnktgsmQdnserD74sVh0KBfcY"
+      }
+    };
+    const socket = io("https://chat-ms.lovester.tech/", socketOptions);
+    socket.on("connect_error", function(e) {
+      console.log("error", e);
+    });
+    socket.on("connect", function() {
+      console.log("Connected");
+      console.log(socket.rooms);
+    });
+    socket.on("afterConnect", function(data) {
+      console.log("afterConnect", data);
+    });
+    socket.on("newMatch", function(data) {
+      console.log("newMatch", data);
+    });
+    socket.on("new-message", function(data) {
+      console.log("msg", data);
+    });
+    socket.on("message-reaction", function(data) {
+      console.log("react", data);
+    });
+    socket.on("message-seen", function(data) {
+      console.log("seen", data);
+    });
+    socket.on("disconnect", function(data) {
+      console.log(socket.rooms);
+      console.log("Disconnected",data);
+    });
+    socket.on("typing", function(data) {
+      console.log("seen", data);
+    });
+  </script>
+</head>
+
+<body>
+<div class="header">
+  <h1>USER--2</h1>
+  <p>Socket Testing</p>
+</div>
+</body>
+</html>
+<style>
+    /* Style the body */
+    body {
+        font-family: Arial;
+        margin: 0;
+    }
+
+    /* Header/Logo Title */
+    .header {
+        padding: 60px;
+        text-align: center;
+        background: #1abc9c;
+        color: white;
+        font-size: 30px;
+    }
+
+    /* Page Content */
+    .content {
+        padding: 20px;
+    }
+</style>

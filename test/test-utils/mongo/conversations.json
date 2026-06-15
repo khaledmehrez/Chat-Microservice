@@ -1,0 +1,34 @@
+[
+  {
+    "_id": "622778951cf7097c0178c67c",
+    "hasMessage": false,
+    "isExcluded": false,
+    "user2": "62221be39537739e8674d981",
+    "user1": "62221be39537739e8674d982",
+    "match": "622777d43e18230e8fdf68c1",
+    "createdAt": {
+      "$date": "2022-03-08T15:39:01.176Z"
+    },
+    "updatedAt": {
+      "$date": "2022-03-21T09:55:06.609Z"
+    },
+    "__v": 0,
+    "latestMessage": "6218fa3ced69261e61d63dfd"
+  },
+  {
+    "_id": "622778951cf7097c0178c67d",
+    "hasMessage": false,
+    "isExcluded": false,
+    "user2": "62221be39537739e8674d982",
+    "user1": "62221be39537739e8674d981",
+    "match": "622777d43e18230e8fdf68c2",
+    "createdAt": {
+      "$date": "2022-03-08T15:39:01.176Z"
+    },
+    "updatedAt": {
+      "$date": "2022-03-21T09:55:06.609Z"
+    },
+    "__v": 0,
+    "latestMessage": "6218fa3ced69261e61d63eaf"
+  }
+]
